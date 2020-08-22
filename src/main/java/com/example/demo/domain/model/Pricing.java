@@ -9,7 +9,7 @@ public class Pricing {
     
     public static Price calculate(Attempt attempt) {
         val termRule = TermRule.matches(attempt.getToday());
-        val candidates = TicketRule.matches(attempt);
+        val candidates = TicketRule.matches(attempt.getCustomer());
         val priceOptional = candidates.stream()
             .map(c -> c.getPriceByTerm(termRule) )
             .min(Comparator.comparingInt(Price::getValue));

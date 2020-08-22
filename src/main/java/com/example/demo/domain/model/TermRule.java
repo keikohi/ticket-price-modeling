@@ -5,11 +5,11 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public enum TermRule {
+    MOVIE_DAY(Today::isMovieDay),
     EARLY_WEEKDAY(today -> today.isEarlyTime() && today.isWeekDay()),
     LATE_WEEKDAY(today -> today.isLateTime() && today.isWeekDay()),
     EARLY_WEEKEND(today -> today.isEarlyTime() && today.isWeekEnd()),
-    LATE_WEEKEND(today -> today.isLateTime() && today.isWeekDay()),
-    MOVIE_DAY(Today::isMovieDay);
+    LATE_WEEKEND(today -> today.isLateTime() && today.isWeekEnd());
 
     private final Predicate<Today> predicate;
 

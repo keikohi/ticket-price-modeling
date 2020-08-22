@@ -15,7 +15,7 @@ public class Customer {
     
     
     boolean isCinemaCitizen() {
-        return this.membershipType.equals(MembershipType.CinemaCitizen);
+        return this.membershipType.equals(MembershipType.CINEMA_CITIZEN);
     }
     
     boolean isOver60() {
@@ -31,22 +31,22 @@ public class Customer {
     }
     
     boolean isUniversityOrCollage() {
-        return this.studentType.equals(StudentType.University) ||
-                this.studentType.equals(StudentType.Collage);
+        return this.studentType.equals(StudentType.UNIVERSITY) ||
+                this.studentType.equals(StudentType.COLLAGE);
     }
     
     boolean isJuniorOrHighSchoolStudent() {
-        return this.studentType.equals(StudentType.JuniorHighSchool) ||
-                this.studentType.equals(StudentType.HighSchool);
+        return this.studentType.equals(StudentType.JUNIOR_HIGH_SCHOOL) ||
+                this.studentType.equals(StudentType.HIGHSCHOOL);
     }
     
     boolean isChild() {
         return (this.age.isLowerThan6() && !this.age.isBaby() ) || 
-                this.studentType.equals(StudentType.ElementarySchool);
+                this.studentType.equals(StudentType.ELEMENTARY_SCHOOL);
     }
     
     boolean isDisabled() {
-        return this.disabledType.equals(DisabledType.Disabled);
+        return this.disabledType.equals(DisabledType.DISABLED);
     }
 
     boolean isYoung(){

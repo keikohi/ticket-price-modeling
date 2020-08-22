@@ -1,10 +1,10 @@
 package com.example.demo.domain.model.types;
 
 public enum MembershipType {
-    CinemaCitizen,
-    NonMember;
+    CINEMA_CITIZEN,
+    NON_MEMBER;
     
     public boolean isCinemaCitizen() {
-        return this.equals(CinemaCitizen);
+        return this.equals(CINEMA_CITIZEN);
     }
 }

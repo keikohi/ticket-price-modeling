@@ -1,10 +1,10 @@
 package com.example.demo.domain.model.types;
 
 public enum DisabledType {
-    Disabled,
-    NonDisabled;
+    DISABLED,
+    NON_DISABLED;
     
     public boolean isDisabled() {
-        return this.equals(Disabled);
+        return this.equals(DISABLED);
     }
 }

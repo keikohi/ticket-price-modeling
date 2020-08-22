@@ -46,6 +46,8 @@ public enum TicketTable {
                 return this.earlyWeekendPrice;
             case LATE_WEEKEND:
                 return this.lateWeekendPrice;
+            case MOVIE_DAY:
+                return this.movieDayPrice;
             default:
                 throw new IllegalArgumentException("No such TermRule: " + termRule.toString());
         }

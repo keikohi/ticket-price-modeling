@@ -7,42 +7,39 @@ import java.util.stream.Stream;
 
 public enum TicketRule {
     
-    CINEMA_CITIZEN(TicketTable.CINEMA_CITIZEN, Attempt::isCinemaCitizen),
-    ELDER_CINEMA_CITIZEN(TicketTable.ELDER_CINEMA_CITIZEN, Attempt::isElderyCinemaCitizen),
+    CINEMA_CITIZEN(TicketTable.CINEMA_CITIZEN, Customer::isCinemaCitizen),
+    ELDER_CINEMA_CITIZEN(TicketTable.ELDER_CINEMA_CITIZEN, c -> c.isCinemaCitizen() && c.isOver60()),
 
-    NORMAL(TicketTable.NORMAL, Attempt::isNormal),
-
-    SENIOR(TicketTable.SENIOR, Attempt::isSenior),
-
+    NORMAL(TicketTable.NORMAL, c -> true),
+    SENIOR(TicketTable.SENIOR, Customer::isOver70),
     /* 学生・子供料金 */
-    UNIVERSITY_OR_COLLAGE(TicketTable.UNIVERSITY_OR_COLLAGE, Attempt::isUniversityOrCollage),
-    JUNIOR_OR_HIGHSCHOOL(TicketTable.JUNIOR_OR_HIGHSCHOOL, Attempt::isJuniorOrHighSchoolStudent),
-    CHILD(TicketTable.CHILD, Attempt::isChild),
-
+    UNIVERSITY_OR_COLLAGE(TicketTable.UNIVERSITY_OR_COLLAGE, Customer::isUniversityOrCollage),
+    JUNIOR_OR_HIGHSCHOOL(TicketTable.JUNIOR_OR_HIGHSCHOOL, Customer::isJuniorOrHighSchoolStudent),
+    CHILD(TicketTable.CHILD, Customer::isChild),
     /* 障害者 */
-    DISABLED(TicketTable.DISABLED, Attempt::isDisabled),
-    YOUNGD_DISABLED(TicketTable.YOUNG_DISABLED, Attempt::isYoungDisabled),
+    DISABLED(TicketTable.DISABLED, Customer::isDisabled),
+    YOUNGD_DISABLED(TicketTable.YOUNG_DISABLED, c -> c.isYoung() && c.isDisabled()),
 
-    BABY(TicketTable.BABY, Attempt::isBaby);
+    BABY(TicketTable.BABY, Customer::isBaby);
 
     private final TicketTable ticketTable;
-    private final Predicate<Attempt> predicate;
+    private final Predicate<Customer> predicate;
 
-    TicketRule(TicketTable ticketTable, Predicate<Attempt> predicate) {
+    TicketRule(TicketTable ticketTable, Predicate<Customer> predicate) {
         this.ticketTable = ticketTable;
         this.predicate = predicate;
     }
 
-    public static List<TicketTable> matches(Attempt attempt) {
+    public static List<TicketTable> matches(Customer customer) {
         return Stream.of(TicketRule.values())
-            .filter(t -> t.test(attempt))
+            .filter(t -> t.test(customer))
             .map(t -> t.ticketTable)
             .collect(Collectors.toList());
     }
 
 
-    private boolean test(Attempt attempt) {
-        return this.predicate.test(attempt);
+    private boolean test(Customer customer) {
+        return this.predicate.test(customer);
     }
 
 }

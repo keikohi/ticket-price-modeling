@@ -2,7 +2,7 @@ package com.example.demo.domain.model;
 
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
+@AllArgsConstructor(staticName = "of")
 public class Age {
     private final int age;
     

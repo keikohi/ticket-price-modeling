@@ -1,21 +1,22 @@
 package com.example.demo.domain.model.types;
 
 public enum StudentType {
-    JuniorHighSchool,
-    HighSchool,
-    University,
-    Collage,
-    ElementarySchool;
+    JUNIOR_HIGH_SCHOOL,
+    HIGHSCHOOL,
+    UNIVERSITY,
+    COLLAGE,
+    ELEMENTARY_SCHOOL,
+    NON_STUDENET;
     
     public boolean isUniversityOrCollage() {
-        return this.equals(University) || this.equals(Collage);
+        return this.equals(UNIVERSITY) || this.equals(COLLAGE);
     }
     
     public boolean isJuniorOrHighSchool() {
-        return this.equals(JuniorHighSchool) || this.equals(HighSchool);
+        return this.equals(JUNIOR_HIGH_SCHOOL) || this.equals(HIGHSCHOOL);
     }
     
     public boolean isElementarySchool() {
-        return this.equals(ElementarySchool);
+        return this.equals(ELEMENTARY_SCHOOL);
     }
 }
