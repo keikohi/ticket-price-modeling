@@ -1,5 +1,6 @@
 package com.example.demo.domain.model.types;
 
+/* 学生区分 */
 public enum StudentType {
     JUNIOR_HIGH_SCHOOL,
     HIGHSCHOOL,

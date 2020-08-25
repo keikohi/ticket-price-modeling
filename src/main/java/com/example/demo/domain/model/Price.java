@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+/* 料金 */
+
 @Getter
 @AllArgsConstructor(staticName = "of")
 @EqualsAndHashCode

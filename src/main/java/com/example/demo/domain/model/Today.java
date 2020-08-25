@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 
+/* チケット購入日 */
+
 @AllArgsConstructor(staticName = "of")
 public class Today {
     private final LocalDateTime date;

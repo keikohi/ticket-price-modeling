@@ -2,7 +2,9 @@ package com.example.demo.domain.model;
 
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
+/* 座席 */
+
+@AllArgsConstructor(staticName = "of")
 public class Seat {
     private final String no;
 }
