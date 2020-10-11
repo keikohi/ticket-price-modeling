@@ -17,6 +17,6 @@ public class Pricing {
         val priceOptional = candidateTickets.stream()
             .map(ticket -> ticket.getPriceByTerm(termRule) )
             .min(Comparator.comparingInt(Price::getValue));
-        return Optional.ofNullable(priceOptional.get()).orElseThrow(IllegalArgumentException::new);
+        return priceOptional.orElseThrow(IllegalArgumentException::new);
     }
 }
