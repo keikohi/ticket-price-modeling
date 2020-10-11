@@ -67,7 +67,7 @@ public enum TermRule {
 ```
 
 
-`Pricing'はチケット代の計算を行うクラスです。購入できるチケット候補と上映タームから、最も安いチケットを検索します。
+`Pricing`はチケット代の計算を行うクラスです。購入できるチケット候補と上映タームから、最も安いチケットを検索します。
 
 ``` java
    /* チケット代の計算クラス */
@@ -81,7 +81,7 @@ public enum TermRule {
           val priceOptional = candidateTickets.stream()
               .map(ticket -> ticket.getPriceByTerm(termRule) )
               .min(Comparator.comparingInt(Price::getValue));
-          return Optional.ofNullable(priceOptional.get()).orElseThrow(IllegalArgumentException::new);
+          return priceOptional.orElseThrow(IllegalArgumentException::new);
       }
   }
 ```
